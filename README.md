@@ -36,6 +36,9 @@ To tackle the identified problems, our project focuses on:
 
 To meet these requirements, we utilized **Azure Synapse Analytics** for data processing and **Power BI** for visualization. The following outlines the steps taken in the project:
 
+![](https://github.com/KunLinTsai24/NYC-Taxi-Analysis/blob/main/img/nyc_taxi_architecture_solution.png)
+
+---
 ### Data Sources
 
   **Fact Table:** 
