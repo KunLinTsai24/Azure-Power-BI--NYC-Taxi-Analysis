@@ -113,6 +113,8 @@ Leveraged OPENROWSET with wildcards and metadata functions like filename() and f
 **5. Scheduling and Monitoring**:
 
   * Added triggers to schedule pipeline executions monthly.
+
+![](https://github.com/KunLinTsai24/NYC-Taxi-Analysis/blob/main/img/pipeline.png)
 ---
 ### Power BI Reporting and Visualization
 
@@ -131,6 +133,8 @@ Leveraged OPENROWSET with wildcards and metadata functions like filename() and f
   * Generated line charts showing a stable trend where card payments are approximately 10,000 trips higher than cash payments monthly.
   * Insight: While the overall trend is stable, there is potential to increase card payments further.
 
+![](https://github.com/KunLinTsai24/NYC-Taxi-Analysis/blob/main/img/campaign.png)
+
 **Taxi Demand Analysis**:
 
 * **Demand by Day of Week**:
@@ -147,6 +151,8 @@ Leveraged OPENROWSET with wildcards and metadata functions like filename() and f
 
   * Presented line charts showing that street hail trips consistently surpass dispatch trips by about 50,000 each month.
   * Consideration: Enhance street hail services while exploring opportunities to grow dispatch services.
+    
+![](https://github.com/KunLinTsai24/NYC-Taxi-Analysis/blob/main/img/demand.png)
 ---
 ### Conclusion
 
