@@ -11,10 +11,10 @@ The New York City taxi industry is a vital component of the city's transportatio
 
 To tackle the identified problems, our project focuses on:
 
- **1. Encouraging Credit Card Payments:**
+**1. Encouraging Credit Card Payments:**
 
-    * Analyze current payment methods to establish a baseline ratio of cash to credit card transactions.
-    * Examine payment behaviors during different days of the week and across boroughs to target campaigns effectively.
+   * Analyze current payment methods to establish a baseline ratio of cash to credit card transactions.
+   * Examine payment behaviors during different days of the week and across boroughs to target campaigns effectively.
 
 **2. Identifying Taxi Demand Patterns:**
 
