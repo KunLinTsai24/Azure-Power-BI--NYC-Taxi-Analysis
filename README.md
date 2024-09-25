@@ -11,23 +11,23 @@ The New York City taxi industry is a vital component of the city's transportatio
 
 To tackle the identified problems, our project focuses on:
 
-1. Encouraging Credit Card Payments:
+ **1. Encouraging Credit Card Payments:**
 
     * Analyze current payment methods to establish a baseline ratio of cash to credit card transactions.
     * Examine payment behaviors during different days of the week and across boroughs to target campaigns effectively.
 
-2. Identifying Taxi Demand Patterns:
+**2. Identifying Taxi Demand Patterns:**
 
    * Assess demand based on boroughs, days of the week/weekend, and trip types (street hail vs. dispatch).
    * Analyze trip distance, duration, and fare amounts to optimize pricing and routing strategies.
 
-3. Data Accessibility and Analysis:
+**3. Data Accessibility and Analysis:**
 
    *  Automate data preparation and ingestion processes.
    *  Store transformed data efficiently to enable quick querying and analysis using SQL.
    *  Integrate with Power BI for dynamic visualization of results.
 
-4. Non-Functional Requirements:
+**4. Non-Functional Requirements:**
 
    *  Partition data by month and year to enhance query performance and manageability.
    *  Implement robust scheduling and monitoring of data pipelines.
