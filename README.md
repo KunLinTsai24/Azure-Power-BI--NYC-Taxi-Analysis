@@ -7,6 +7,8 @@ The New York City taxi industry is a vital component of the city's transportatio
 1. Fluctuating Demand Patterns: Passenger demand varies significantly based on the borough, day of the week, and whether it's a weekend or weekday. This fluctuation makes it challenging to optimize taxi availability and meet customer needs efficiently.
 2. Shifts in Payment Preferences: There's an increasing shift towards cashless transactions, yet a substantial number of passengers continue to use cash. Understanding payment behavior is crucial for encouraging the use of credit cards, which can improve transaction efficiency and safety.
 
+To address these issues, this project utilized **Azure Synapse Analytics** for data processing and **ELT pipeline automation**, alongside **Power BI** for visualization. This approach enabled us to analyze and optimize credit card payment campaigns, identify taxi demand patterns, and automate data preparation processes, thereby providing actionable insights for improving operations and profitability.
+
 ## Business Requirements
 
 To tackle the identified problems, our project focuses on:
