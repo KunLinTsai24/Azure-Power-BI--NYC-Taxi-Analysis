@@ -91,10 +91,14 @@ Leveraged OPENROWSET with wildcards and metadata functions like filename() and f
 
 **3. Gold Layer (Aggregated Business Metrics)**:
 
-*  Joined key information required for reporting and analysis to create comprehensive tables.
-*  Stored transformed data in Parquet format to facilitate efficient SQL querying.
-*  Applied CETAS and stored procedures to aggregate business metrics by year and month.
-*  Developed views with partition pruning (gold.trip_data) for enhanced performance.
+* **Creating a Stored Procedure (gold.usp_gold_trip_data_green)**: I created (or altered) a stored procedure to automate the process of creating and dropping external tables for the green taxi trip data. This procedure takes in @year and @month as parameters and dynamically builds an SQL statement that creates an external table for each month's data. The external table aggregates essential information like the borough of pickup, trip date, day, weekend indicator, payment types (credit card or cash), trip type (street-hail or dispatch), total trip distance, duration, and fare amount. Once the data is processed and stored, the table is dropped to clean up after the operation.
+
+* **Executing the Stored Procedure for Multiple Time Periods**: I executed the stored procedure gold.usp_gold_trip_data_green for several months between January 2020 and June 2021. This allowed me to process data and create temporary external tables for each month. After the necessary data was aggregated, I ensured the external tables were dropped to avoid unnecessary storage consumption.
+
+* **Creating a View (gold.vw_trip_data_green)**: Next, I created a view to consolidate the processed data into one unified structure. This view pulls the data from the parquet files stored in external storage under the location gold/trip_data_green. I ensured that specific fields like the borough, trip date, trip counts by payment method, trip distance, duration, and fare amount were properly extracted. To dynamically read from multiple parquet files based on the year and month, I used the OPENROWSET command.
+
+* **Final Data Retrieval**: With the view gold.vw_trip_data_green in place, I can now run a simple SELECT * query to retrieve all the processed green taxi trip data from the parquet files in a well-structured format, making it easy to analyze and explore the results.
+
 ---
 ### Scheduling and Automation with Synapse Pipelines
 
