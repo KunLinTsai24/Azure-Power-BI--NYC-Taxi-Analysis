@@ -98,13 +98,9 @@ By harnessing the capabilities of Azure Synapse Analytics and Power BI, we have 
 
 **Next Steps**
 
-  **Implement Marketing Campaigns**:
+  * **Implement Marketing Campaigns**: Launch targeted promotions to encourage credit card payments during weekends and in Queens and Bronx.
 
-  * Launch targeted promotions to encourage credit card payments during weekends and in Queens and Bronx.
-
-  **Optimize Operations**:
-
-  * Adjust driver schedules and taxi availability to align with demand patterns identified in the analysis.
+  * **Optimize Operations**: Adjust driver schedules and taxi availability to align with demand patterns identified in the analysis.
 ---
 ### Learning Outcome
 
