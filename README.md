@@ -23,17 +23,6 @@ To tackle the identified problems, our project focuses on:
    * Assess demand based on boroughs, days of the week/weekend, and trip types (street hail vs. dispatch).
    * Analyze trip distance, duration, and fare amounts to optimize pricing and routing strategies.
 
-**3. Data Accessibility and Analysis:**
-
-   *  Automate data preparation and ingestion processes.
-   *  Store transformed data efficiently to enable quick querying and analysis using SQL.
-   *  Integrate with Power BI for dynamic visualization of results.
-
-**4. Non-Functional Requirements:**
-
-   *  Partition data by month and year to enhance query performance and manageability.
-   *  Implement robust scheduling and monitoring of data pipelines.
-
 ## Process Overview
 
 To meet these requirements, we utilized **Azure Synapse Analytics** for data processing and **Power BI** for visualization. The following outlines the steps taken in the project:
@@ -55,73 +44,8 @@ To meet these requirements, we utilized **Azure Synapse Analytics** for data pro
    * payment_type (JSON)
    * vendor (CSV)
 ---
-### Data Exploration and Schema Application
-
-**1. Querying CSV and TSV Files:**
-
-Employed OPENROWSET to read CSV and TSV files, specifying data types explicitly for taxi_zone.csv, calendar.csv, vendor.csv, and trip_type.tsv.
-
-**2. Querying JSON Files:**
-
-Used OPENROWSET and OPENJSON to parse payment_type.json (a single-line JSON containing an array) and rate_code.json (standard JSON format).
-
-**3. Querying Partitioned Data:**
-
-Leveraged OPENROWSET with wildcards and metadata functions like filename() and filepath() to read partitioned CSV, Parquet, and Delta Lake files.
-
-**4. Data Quality Check:**
-
- * Identified duplicates using GROUP BY on primary keys.
- * Detected missing values by comparing COUNT(*) with COUNT(column_name).
----
-### Data Ingestion and Transformation
-
-**1. Bronze Layer (Raw Data Exposure):**
-*  Created external data sources and file formats.
-*  Established external tables for CSV files (bronze.taxi_zone, bronze.calendar, bronze.vendor, bronze.trip_type).
-*  Built views using OPENROWSET for JSON files (bronze.rate_code, bronze.payment_type).
-*  Implemented partition pruning strategies for efficient querying of bronze.trip_data.
-
-**2. Silver Layer (Structured and Cleaned Data)**:
-
-*  Utilized CREATE EXTERNAL TABLE AS SELECT (CETAS) to transform and store data as Parquet files.
-*  Transformed bronze tables and views into silver tables (silver.taxi_zone, silver.calendar, silver.vendor, silver.trip_type, silver.rate_code, silver.payment_type).
-*  Employed stored procedures to partition data by year and month, saving it to corresponding storage locations.
-*  Created views with partition pruning for silver.trip_data to optimize query performance.
-
-**3. Gold Layer (Aggregated Business Metrics)**:
-
-* **Creating a Stored Procedure (gold.usp_gold_trip_data_green)**: I created (or altered) a stored procedure to automate the process of creating and dropping external tables for the green taxi trip data. This procedure takes in @year and @month as parameters and dynamically builds an SQL statement that creates an external table for each month's data. The external table aggregates essential information like the borough of pickup, trip date, day, weekend indicator, payment types (credit card or cash), trip type (street-hail or dispatch), total trip distance, duration, and fare amount. Once the data is processed and stored, the table is dropped to clean up after the operation.
-
-* **Executing the Stored Procedure for Multiple Time Periods**: I executed the stored procedure gold.usp_gold_trip_data_green for several months between January 2020 and June 2021. This allowed me to process data and create temporary external tables for each month. After the necessary data was aggregated, I ensured the external tables were dropped to avoid unnecessary storage consumption.
-
-* **Creating a View (gold.vw_trip_data_green)**: Next, I created a view to consolidate the processed data into one unified structure. This view pulls the data from the parquet files stored in external storage under the location gold/trip_data_green. I ensured that specific fields like the borough, trip date, trip counts by payment method, trip distance, duration, and fare amount were properly extracted. To dynamically read from multiple parquet files based on the year and month, I used the OPENROWSET command.
-
-* **Final Data Retrieval**: With the view gold.vw_trip_data_green in place, I can now run a simple SELECT * query to retrieve all the processed green taxi trip data from the parquet files in a well-structured format, making it easy to analyze and explore the results.
-
----
-### Scheduling and Automation with Synapse Pipelines
-
-**1. Pipeline Configuration**:
-  * Defined parameters (e.g., file paths) and variables to manage pipeline execution dynamically.
-    
-**2. Raw to Bronze Transformation**:
-  * Implemented ForEach activities looping through stored procedures to create bronze tables and views.
-
-**3. Bronze to Silver Transformation**:
-
-  * Set up ForEach activities looping through file paths and stored procedures.
-  * Included Delete activities to clear existing files in target folders before data ingestion.
-  * Executed stored procedures to perform CETAS operations with bronze tables and views, creating silver tables.
-
-**4. Silver to Gold Transformation**:
-
-  * Scripted activities to retrieve distinct years and months for partitioning.
-  * Employed ForEach activities to loop through these time periods, performing deletions and executing stored procedures to generate gold-level data and views.
-
-**5. Scheduling and Monitoring**:
-
-  * Added triggers to schedule pipeline executions monthly.
+### ETL pipeline Construction
+The ETL pipeline transforms raw data into meaningful insights through a structured process. Initially, raw data is explored using SQL commands like OPENROWSET to query CSV, TSV, JSON, and partitioned files while performing data quality checks for duplicates and missing values. In the Bronze Layer, external tables and views are created to expose raw data efficiently. The Silver Layer involves cleaning and structuring data by transforming it into Parquet files using CETAS, partitioning by time, and creating optimized views. Finally, the Gold Layer aggregates business metrics through stored procedures and dynamic views, consolidating data for analysis. Automation is achieved using Synapse pipelines with parameterized activities to process data in stages (Raw to Bronze, Bronze to Silver, Silver to Gold) and scheduled triggers to ensure timely execution and monitoring.
 
 ![](https://github.com/KunLinTsai24/NYC-Taxi-Analysis/blob/main/img/pipeline.png)
 ---
