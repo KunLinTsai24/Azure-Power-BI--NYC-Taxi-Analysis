@@ -1,5 +1,3 @@
-# NYC-Taxi-Analysis
-
 ## Introduction
 
 The New York City taxi industry is a vital component of the city's transportation network, serving millions of passengers annually. However, it faces specific challenges that directly impact its operations and profitability:
