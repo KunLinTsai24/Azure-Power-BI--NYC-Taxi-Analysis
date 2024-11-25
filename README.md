@@ -99,11 +99,4 @@ By harnessing the capabilities of Azure Synapse Analytics and Power BI, we have 
   * **Implement Marketing Campaigns**: Launch targeted promotions to encourage credit card payments during weekends and in Queens and Bronx.
 
   * **Optimize Operations**: Adjust driver schedules and taxi availability to align with demand patterns identified in the analysis.
----
-### Learning Outcome
 
-Throughout this project, I gained significant insights and skills in:
-
-  * **Data Automation and Pipeline Development**: Mastered building dynamic and efficient data pipelines in Azure Synapse Analytics using parameters, variables, stored procedures, and CETAS, which streamlined data preparation and ensured robust, reliable workflows.
-  * **Data Transformation and Management**: Developed proficiency in handling diverse data formats (CSV, TSV, JSON, Parquet), applied schemas effectively, addressed data quality challenges, and implemented best practices in data modeling, partitioning, and indexing to optimize query performance.
-  * **Data Visualization with Power BI**: Enhanced my ability to create insightful visualizations and dashboards, connected Power BI seamlessly to Azure Synapse Analytics, and optimized data models and refresh schedules for better performance and user engagement.
