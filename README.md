@@ -62,7 +62,7 @@ The ETL pipeline transforms raw data into meaningful insights through a structur
 * **Payment Type by Month**:
 
   * Generated line charts showing a stable trend where card payments are approximately 10,000 trips higher than cash payments monthly.
-  * Insight: While the overall trend is stable, there is potential to increase card payments further.
+  * Recommendation: Focus on credit card promotion campaigns to increase card payments further.
 
 ![](https://github.com/KunLinTsai24/NYC-Taxi-Analysis/blob/main/img/campaign.png)
 
@@ -71,17 +71,17 @@ The ETL pipeline transforms raw data into meaningful insights through a structur
 * **Demand by Day of Week**:
 
   * Used bar charts to reveal that Fridays experience the highest demand.
-  * Action: Allocate more taxis and drivers on Fridays to meet increased demand.
+  * Recommendation: Allocate more taxis and drivers on Fridays to meet increased demand.
 
 * **Demand by Borough**:
 
   * Illustrated that Manhattan has the highest demand using bar charts.
-  * Strategy: Optimize taxi availability in Manhattan to maximize revenue opportunities.
+  * Recommendation: Optimize taxi availability in Manhattan to maximize revenue opportunities.
 
 * **Trip Type by Month**:
 
   * Presented line charts showing that street hail trips consistently surpass dispatch trips by about 50,000 each month.
-  * Consideration: Enhance street hail services while exploring opportunities to grow dispatch services.
+  * Recommendation: Enhance street hail services while exploring opportunities to grow dispatch services.
     
 ![](https://github.com/KunLinTsai24/NYC-Taxi-Analysis/blob/main/img/demand.png)
 ---
